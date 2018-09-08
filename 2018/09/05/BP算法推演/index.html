@@ -86,7 +86,7 @@
 <meta property="og:site_name" content="Fighting!!!">
 <meta property="og:description" content="BP算法的目的计算 $ \partial J(\Theta) \over \partial \Theta_{ij}^{(l)} $  然后利用梯度下降法求解$min(J(\Theta))$ 时的 $\Theta$ 值 定义 $J(\Theta)$ 的计算公式如下：  J(\Theta) = -{1 \over m}* \sum_{i=1}^m\sum_{k=1}^K[y_k^{(i)}*log((">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-08T03:10:49.135Z">
+<meta property="og:updated_time" content="2018-09-08T03:20:02.417Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BP算法推演">
 <meta name="twitter:description" content="BP算法的目的计算 $ \partial J(\Theta) \over \partial \Theta_{ij}^{(l)} $  然后利用梯度下降法求解$min(J(\Theta))$ 时的 $\Theta$ 值 定义 $J(\Theta)$ 的计算公式如下：  J(\Theta) = -{1 \over m}* \sum_{i=1}^m\sum_{k=1}^K[y_k^{(i)}*log((">
@@ -364,11 +364,13 @@
 <script type="math/tex; mode=display">
 J(\Theta) = -{1 \over m}* \sum_{i=1}^m\sum_{k=1}^K[y_k^{(i)}*log((h_\Theta(x^{(i)}))_k) + (1-y_k^{(i)})*log(1-(h_\Theta(x^{(i)}))_k)] + {\lambda \over 2m} *\sum_{l=1}^{L-1}\sum_{i=1}^{s_l}\sum_{j=1}^{s_{l+1}}(\Theta_{j,i}^{(l)})^2</script><p>其中 $h_\Theta(x^{(i)})$ 是通过FP算法计算的：</p>
 <script type="math/tex; mode=display">
-a^{(1)} = x^{(i)}</script><script type="math/tex; mode=display">
-z_j^{(l)} = \sum_{i=0}^{s_{l-1}}a_i^{l-1}*\Theta_{j,i}^{(l-1)}</script><script type="math/tex; mode=display">
-a_j^{l} = g(z_j^{(l)})</script><script type="math/tex; mode=display">
-a_j^{L} = g(\sum_{i=0}^{s_{L-1}}a_i^{L-1}*\Theta_{j,i}^{(L-1)})</script><script type="math/tex; mode=display">
-h_\Theta(x^{(i)}) = a^L</script><p>如果将$J(\Theta)$中的$ h_\Theta(x^{(i)})_k $用FP算法中公式替换后求$ \partial J(\Theta) \over \partial \Theta_{ij}^{(l)} $ ，也是可以直接求解的，只是比较复杂。通过利用求导的链式法则，利用BP算法则可以高效的求导。</p>
+\begin{align}
+&a^{(1)} = x^{(i)} \\
+&z_j^{(l)} = \sum_{i=0}^{s_{l-1}}a_i^{l-1}*\Theta_{j,i}^{(l-1)} \\
+&a_j^{(l)} = g(z_j^{(l)}) \\
+&a_j^{(L)} = g(\sum_{i=0}^{s_{L-1}}a_i^{L-1}*\Theta_{j,i}^{(L-1)}) \\
+&h_\Theta(x^{(i)}) = a^L
+\end{align}</script><p>如果将$J(\Theta)$中的$ h_\Theta(x^{(i)})_k $用FP算法中公式替换后求$ \partial J(\Theta) \over \partial \Theta_{ij}^{(l)} ​$ ，也是可以直接求解的，只是比较复杂。通过利用求导的链式法则，利用BP算法则可以高效的求导。</p>
 <h2 id="求解思路分析"><a href="#求解思路分析" class="headerlink" title="求解思路分析"></a>求解思路分析</h2><h3 id="求解模型"><a href="#求解模型" class="headerlink" title="求解模型"></a>求解模型</h3><p>为便于理解，可以观察如下神经网络模型图：</p>
 <p>观察图，定义$ \delta_i^{(l)} $ 为$l$层的第$i$个神经元节点的$\partial J(\Theta) \over \partial z_i$ ,可以得出如下结论：</p>
 <p>通过该$\delta^{(l)}$则可以方便的计算出第$l-1$层对应的每个$\theta$的偏导 $\partial J(\Theta) \over \partial \Theta_{j,i}^{(l-1)}$ ，如果可以计算出$\delta^{(l-1)}$则可以依次计算出所有的$\theta$的偏导数。</p>
