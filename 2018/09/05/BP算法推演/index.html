@@ -86,10 +86,12 @@
 <meta property="og:site_name" content="Fighting!!!">
 <meta property="og:description" content="BP算法的目的计算 $ \partial J(\Theta) \over \partial \Theta_{ij}^{(l)} $  然后利用梯度下降法求解$min(J(\Theta))$ 时的 $\Theta$ 值 定义 $J(\Theta)$ 的计算公式如下：  J(\Theta) = -{1 \over m}* \sum_{i=1}^m\sum_{k=1}^K[y_k^{(i)}*log((">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-09-08T03:20:02.417Z">
+<meta property="og:image" content="http://learn.yijinjin.com/2018/09/05/BP算法推演/image-20180909124400134.png">
+<meta property="og:updated_time" content="2018-09-09T04:52:51.049Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="BP算法推演">
 <meta name="twitter:description" content="BP算法的目的计算 $ \partial J(\Theta) \over \partial \Theta_{ij}^{(l)} $  然后利用梯度下降法求解$min(J(\Theta))$ 时的 $\Theta$ 值 定义 $J(\Theta)$ 的计算公式如下：  J(\Theta) = -{1 \over m}* \sum_{i=1}^m\sum_{k=1}^K[y_k^{(i)}*log((">
+<meta name="twitter:image" content="http://learn.yijinjin.com/2018/09/05/BP算法推演/image-20180909124400134.png">
 
 
 
@@ -370,10 +372,11 @@ J(\Theta) = -{1 \over m}* \sum_{i=1}^m\sum_{k=1}^K[y_k^{(i)}*log((h_\Theta(x^{(i
 &a_j^{(l)} = g(z_j^{(l)}) \\
 &a_j^{(L)} = g(\sum_{i=0}^{s_{L-1}}a_i^{L-1}*\Theta_{j,i}^{(L-1)}) \\
 &h_\Theta(x^{(i)}) = a^L
-\end{align}</script><p>如果将$J(\Theta)$中的$ h_\Theta(x^{(i)})_k $用FP算法中公式替换后求$ \partial J(\Theta) \over \partial \Theta_{ij}^{(l)} ​$ ，也是可以直接求解的，只是比较复杂。通过利用求导的链式法则，利用BP算法则可以高效的求导。</p>
+\end{align}</script><p>如果将$J(\Theta)$中的$ h_\Theta(x^{(i)})_k $用FP算法中公式替换后求$ \partial J(\Theta) \over \partial \Theta_{ij}^{(l)} $ ，也是可以直接求解的，只是比较复杂。通过利用求导的链式法则，利用BP算法则可以高效的求导。</p>
 <h2 id="求解思路分析"><a href="#求解思路分析" class="headerlink" title="求解思路分析"></a>求解思路分析</h2><h3 id="求解模型"><a href="#求解模型" class="headerlink" title="求解模型"></a>求解模型</h3><p>为便于理解，可以观察如下神经网络模型图：</p>
+<p><img src="/2018/09/05/BP算法推演/image-20180909124400134.png" alt="image-20180909124400134"></p>
 <p>观察图，定义$ \delta_i^{(l)} $ 为$l$层的第$i$个神经元节点的$\partial J(\Theta) \over \partial z_i$ ,可以得出如下结论：</p>
-<p>通过该$\delta^{(l)}$则可以方便的计算出第$l-1$层对应的每个$\theta$的偏导 $\partial J(\Theta) \over \partial \Theta_{j,i}^{(l-1)}$ ，如果可以计算出$\delta^{(l-1)}$则可以依次计算出所有的$\theta$的偏导数。</p>
+<p>通过该$\delta^{(l)}$则可以方便计算出第$l-1$层对应的每个$\theta$的偏导 $\partial J(\Theta) \over \partial \Theta_{j,i}^{(l-1)}$ ，如果可以计算出$\delta^{(l-1)}$则可以依次计算出所有的$\theta$的偏导数。</p>
 <h3 id="如何求解-delta-l-1-（这是一个向量）"><a href="#如何求解-delta-l-1-（这是一个向量）" class="headerlink" title="如何求解$ \delta^{(l-1)}$ （这是一个向量）"></a>如何求解$ \delta^{(l-1)}$ （这是一个向量）</h3><script type="math/tex; mode=display">
 \delta_i^{(l-1)} = (\sum_{j=1}^{s^{(l)}}\delta_j^{(l)}{\partial z_j \over \partial a_i }) *g\ ^{'}(z_i) = (\sum_{j=1}^{s^{(l)}}\delta_j^{(l)}\Theta_{j,i}^{(l-1)}) *g\ ^{'}(z_i) \tag{1-1}</script><p>向量版：</p>
 <script type="math/tex; mode=display">
@@ -442,6 +445,10 @@ D^{(l)} = {1\over m}*{\sum_{t=1}^m ({\partial J(\Theta) \over \partial \Theta^{(
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/09/利用LaTeX自带的tikz库绘制NN图/" rel="prev" title="利用LaTeX自带的tikz库绘制NN图">
+                利用LaTeX自带的tikz库绘制NN图 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -518,7 +525,7 @@ D^{(l)} = {1\over m}*{\sum_{t=1}^m ({\partial J(\Theta) \over \partial \Theta^{(
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -540,7 +547,7 @@ D^{(l)} = {1\over m}*{\sum_{t=1}^m ({\partial J(\Theta) \over \partial \Theta^{(
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">10</span>
+                  <span class="site-state-item-count">12</span>
                   <span class="site-state-item-name">标签</span>
                 </a>
               </div>
