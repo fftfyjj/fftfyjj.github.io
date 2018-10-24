@@ -87,7 +87,7 @@
 <meta property="og:description" content="前言本文主要关注三点： 什么是补码？ 为啥要用补码？ 如何验证计算机是否采用补码？ 什么是补码？定义正数的补码就是它本身；负数的补码就是它的绝对值的反码再加一； 原理设存在某减法运算 $a-b$，则$-b$也可以 表示为$( 0 -b)$。 假设计算机的运算字大小为 $m$ 比特，运算中超过m位的高位会被丢弃，则 $0 -b$ 可以表示为 $2^m - b = (2^m - 1 -b) + 1 =">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://learn.yijinjin.com/2018/10/03/补码/image-20181003112908964.png">
-<meta property="og:updated_time" content="2018-10-03T04:09:41.198Z">
+<meta property="og:updated_time" content="2018-10-03T04:18:08.608Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="补码">
 <meta name="twitter:description" content="前言本文主要关注三点： 什么是补码？ 为啥要用补码？ 如何验证计算机是否采用补码？ 什么是补码？定义正数的补码就是它本身；负数的补码就是它的绝对值的反码再加一； 原理设存在某减法运算 $a-b$，则$-b$也可以 表示为$( 0 -b)$。 假设计算机的运算字大小为 $m$ 比特，运算中超过m位的高位会被丢弃，则 $0 -b$ 可以表示为 $2^m - b = (2^m - 1 -b) + 1 =">
@@ -384,9 +384,6 @@
 <h2 id="如何验证计算机是否采用补码？"><a href="#如何验证计算机是否采用补码？" class="headerlink" title="如何验证计算机是否采用补码？"></a>如何验证计算机是否采用补码？</h2><blockquote>
 <p>负数在内存中是以补码的形式储存的,先写出该负整数的原码,然后将原码除符号位以外的各位取反,得到反码,<br>再将反码加一,得到补码,即为该负数的二进制储存形式 。</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> void main()</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> &#123;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> 	char *p;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> 	*p=-130;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> 	<span class="built_in">printf</span>(<span class="string">"%d"</span>,*p);</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> &#125;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"></span></span><br></pre></td></tr></table></figure>
-</blockquote>
-<p>&gt;</p>
-<blockquote>
 <p>正确的答案是126，<br>原因：-130在计算机里面存储形式是11111111-01111110(取反码的形式)，<br>因为C里面的CHAR是8位的，所以，最高位1去掉，剩下01111110。</p>
 <p>——————————- 本文来自 君记否 的CSDN 博客 ，全文地址请点击：<a href="https://blog.csdn.net/liziyun537/article/details/6006844?utm_source=copy" target="_blank" rel="noopener">https://blog.csdn.net/liziyun537/article/details/6006844?utm_source=copy</a> </p>
 </blockquote>
