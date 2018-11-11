@@ -79,19 +79,23 @@
 
 
 
-<meta name="description" content="前言本文主要关注三点： 什么是补码？ 为啥要用补码？ 如何验证计算机是否采用补码？ 什么是补码？定义正数的补码就是它本身；负数的补码就是它的绝对值的反码再加一； 原理设存在某减法运算 $a-b$，则$-b$也可以 表示为$( 0 -b)$。 假设计算机的运算字大小为 $m$ 比特，运算中超过m位的高位会被丢弃，则 $0 -b$ 可以表示为 $2^m - b = (2^m - 1 -b) + 1 =">
+<meta name="description" content="背景目前自游泳的镜像模型有了个初步的自我认识，感觉更多的要开始加强游泳的锻炼效果了，在游泳此“全侵”式游泳虽然可以长游不累，但是感觉身体和心理没有满足感。反而身体发力快速竞技式游泳后，虽然累却满足。为更好的锻炼身体，按照《游泳健身》《美国自游泳技术》等书籍，按照锻炼计划后续开始游泳锻炼健身。 由于工作原因，每周游泳的次数无法完全保证，非游泳时间，按照陆地训练计划训练身体体能吧。 陆上训练目的：锻炼">
 <meta property="og:type" content="article">
-<meta property="og:title" content="补码">
-<meta property="og:url" content="http://learn.yijinjin.com/2018/10/03/补码/index.html">
+<meta property="og:title" content="游泳锻炼计划">
+<meta property="og:url" content="http://learn.yijinjin.com/2018/11/11/游泳锻炼计划/index.html">
 <meta property="og:site_name" content="Fighting!!!">
-<meta property="og:description" content="前言本文主要关注三点： 什么是补码？ 为啥要用补码？ 如何验证计算机是否采用补码？ 什么是补码？定义正数的补码就是它本身；负数的补码就是它的绝对值的反码再加一； 原理设存在某减法运算 $a-b$，则$-b$也可以 表示为$( 0 -b)$。 假设计算机的运算字大小为 $m$ 比特，运算中超过m位的高位会被丢弃，则 $0 -b$ 可以表示为 $2^m - b = (2^m - 1 -b) + 1 =">
+<meta property="og:description" content="背景目前自游泳的镜像模型有了个初步的自我认识，感觉更多的要开始加强游泳的锻炼效果了，在游泳此“全侵”式游泳虽然可以长游不累，但是感觉身体和心理没有满足感。反而身体发力快速竞技式游泳后，虽然累却满足。为更好的锻炼身体，按照《游泳健身》《美国自游泳技术》等书籍，按照锻炼计划后续开始游泳锻炼健身。 由于工作原因，每周游泳的次数无法完全保证，非游泳时间，按照陆地训练计划训练身体体能吧。 陆上训练目的：锻炼">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="http://learn.yijinjin.com/2018/10/03/补码/image-20181003112908964.png">
-<meta property="og:updated_time" content="2018-10-03T04:18:08.608Z">
+<meta property="og:image" content="http://learn.yijinjin.com/2018/11/11/游泳锻炼计划/image-20181111221353266.png">
+<meta property="og:image" content="http://learn.yijinjin.com/2018/11/11/游泳锻炼计划/image-20181111221412711.png">
+<meta property="og:image" content="http://learn.yijinjin.com/2018/11/11/游泳锻炼计划/image-20181111221653699.png">
+<meta property="og:image" content="http://learn.yijinjin.com/2018/11/11/游泳锻炼计划/image-20181111222820866.png">
+<meta property="og:image" content="http://learn.yijinjin.com/2018/11/11/游泳锻炼计划/image-20181111223446614.png">
+<meta property="og:updated_time" content="2018-11-11T15:40:04.515Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="补码">
-<meta name="twitter:description" content="前言本文主要关注三点： 什么是补码？ 为啥要用补码？ 如何验证计算机是否采用补码？ 什么是补码？定义正数的补码就是它本身；负数的补码就是它的绝对值的反码再加一； 原理设存在某减法运算 $a-b$，则$-b$也可以 表示为$( 0 -b)$。 假设计算机的运算字大小为 $m$ 比特，运算中超过m位的高位会被丢弃，则 $0 -b$ 可以表示为 $2^m - b = (2^m - 1 -b) + 1 =">
-<meta name="twitter:image" content="http://learn.yijinjin.com/2018/10/03/补码/image-20181003112908964.png">
+<meta name="twitter:title" content="游泳锻炼计划">
+<meta name="twitter:description" content="背景目前自游泳的镜像模型有了个初步的自我认识，感觉更多的要开始加强游泳的锻炼效果了，在游泳此“全侵”式游泳虽然可以长游不累，但是感觉身体和心理没有满足感。反而身体发力快速竞技式游泳后，虽然累却满足。为更好的锻炼身体，按照《游泳健身》《美国自游泳技术》等书籍，按照锻炼计划后续开始游泳锻炼健身。 由于工作原因，每周游泳的次数无法完全保证，非游泳时间，按照陆地训练计划训练身体体能吧。 陆上训练目的：锻炼">
+<meta name="twitter:image" content="http://learn.yijinjin.com/2018/11/11/游泳锻炼计划/image-20181111221353266.png">
 
 
 
@@ -121,13 +125,13 @@
 
 
 
-  <link rel="canonical" href="http://learn.yijinjin.com/2018/10/03/补码/"/>
+  <link rel="canonical" href="http://learn.yijinjin.com/2018/11/11/游泳锻炼计划/"/>
 
 
 
 
 
-  <title>补码 | Fighting!!!</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
+  <title>游泳锻炼计划 | Fighting!!!</title><!-- hexo-inject:begin --><!-- hexo-inject:end -->
   
 
 
@@ -294,7 +298,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://learn.yijinjin.com/2018/10/03/补码/">
+    <link itemprop="mainEntityOfPage" href="http://learn.yijinjin.com/2018/11/11/游泳锻炼计划/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Yi Jinjin">
@@ -311,7 +315,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">补码</h1>
+          <h1 class="post-title" itemprop="name headline">游泳锻炼计划</h1>
         
 
         <div class="post-meta">
@@ -323,8 +327,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-03T09:41:02+08:00">
-                2018-10-03
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-11T21:42:16+08:00">
+                2018-11-11
               </time>
             
 
@@ -333,6 +337,28 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Swimming/" itemprop="url" rel="index">
+                    <span itemprop="name">Swimming</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -361,35 +387,40 @@
       
 
       
-        <h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>本文主要关注三点：</p>
-<p>什么是补码？</p>
-<p>为啥要用补码？</p>
-<p>如何验证计算机是否采用补码？</p>
-<h2 id="什么是补码？"><a href="#什么是补码？" class="headerlink" title="什么是补码？"></a>什么是补码？</h2><h3 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h3><p>正数的补码就是它本身；负数的补码就是它的绝对值的反码再加一；</p>
-<h3 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h3><p>设存在某减法运算 $a-b$，则$-b$也可以 表示为$( 0 -b)$。</p>
-<p>假设计算机的运算字大小为 $m$ 比特，运算中超过m位的高位会被丢弃，则 $0 -b$ 可以表示为 $2^m - b = (2^m - 1 -b) + 1 = b_{反码} + 1$ (最高位1由于超过了m位被抛弃) 。</p>
-<p>补码的另一层含义：补码可以定义为最高位权值为$-2^m$的数</p>
-<h3 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h3><p><strong>在计算机中，一切数据均是补码存储的。CPU中在实现加减法运算时，不会区分是否是有/无符号运算。</strong> C语言概念中的有/无符号的加减法运算在硬件实现上是完全一致的。</p>
-<p>如下图是一个简单的8位加减法器的实现，当出现进位时CF被设置为1，当输出的最高位 与 两个输入最高位 都一致时，设置OF 为1。接下来针对该实现举例探索：</p>
-<p><img src="/2018/10/03/补码/image-20181003112908964.png" alt="image-20181003112908964"></p>
-<h4 id="无符号加法运算"><a href="#无符号加法运算" class="headerlink" title="无符号加法运算"></a>无符号加法运算</h4><p>a + b 直接进行加法</p>
-<p>例如:</p>
-<script type="math/tex; mode=display">
-1111 1111 \\
-0000 0001 \over 100000000</script><p>其中CF = 1 , OF = 0； 如果看成是无符号运算，发现CF == 1，则表示结果溢出了，无效。如果是看成是有符号运算，发现OF == 0，表示结果有效，相当于计算了$(-1) + 1 = 0$;</p>
-<h4 id="无符号减法运算"><a href="#无符号减法运算" class="headerlink" title="无符号减法运算"></a>无符号减法运算</h4><p>a - b 则被转换为a + (b的补码) 再进行运算，此处举例推理略。</p>
-<h4 id="有符号加法运算"><a href="#有符号加法运算" class="headerlink" title="有符号加法运算"></a>有符号加法运算</h4><p>a + b 直接进行加法， 此处举例推理略。</p>
-<h4 id="有符号减法运算"><a href="#有符号减法运算" class="headerlink" title="有符号减法运算"></a>有符号减法运算</h4><p>a - b 则被转换为a + (b的补码) 再进行运算， 此处举例推理略。</p>
-<h2 id="为啥用补码？"><a href="#为啥用补码？" class="headerlink" title="为啥用补码？"></a>为啥用补码？</h2><p>因为就可以用加法器实现减法器，降低硬件成本。</p>
-<h2 id="如何验证计算机是否采用补码？"><a href="#如何验证计算机是否采用补码？" class="headerlink" title="如何验证计算机是否采用补码？"></a>如何验证计算机是否采用补码？</h2><blockquote>
-<p>负数在内存中是以补码的形式储存的,先写出该负整数的原码,然后将原码除符号位以外的各位取反,得到反码,<br>再将反码加一,得到补码,即为该负数的二进制储存形式 。</p>
-<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&gt;</span><span class="bash"> void main()</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> &#123;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> 	char *p;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> 	*p=-130;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> 	<span class="built_in">printf</span>(<span class="string">"%d"</span>,*p);</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"> &#125;</span></span><br><span class="line"><span class="meta">&gt;</span><span class="bash"></span></span><br></pre></td></tr></table></figure>
-<p>正确的答案是126，<br>原因：-130在计算机里面存储形式是11111111-01111110(取反码的形式)，<br>因为C里面的CHAR是8位的，所以，最高位1去掉，剩下01111110。</p>
-<p>——————————- 本文来自 君记否 的CSDN 博客 ，全文地址请点击：<a href="https://blog.csdn.net/liziyun537/article/details/6006844?utm_source=copy" target="_blank" rel="noopener">https://blog.csdn.net/liziyun537/article/details/6006844?utm_source=copy</a> </p>
-</blockquote>
-<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p><a href="https://www.cnblogs.com/myseries/p/5204878.html" target="_blank" rel="noopener">计算机为什么采用补码来进行运算</a></p>
-<p><a href="https://www.jianshu.com/p/6bc33135e481" target="_blank" rel="noopener">https://www.jianshu.com/p/6bc33135e481</a></p>
-<p><a href="https://blog.csdn.net/a627088424/article/details/9173831" target="_blank" rel="noopener">https://blog.csdn.net/a627088424/article/details/9173831</a></p>
+        <h2 id="背景"><a href="#背景" class="headerlink" title="背景"></a>背景</h2><p>目前自游泳的镜像模型有了个初步的自我认识，感觉更多的要开始加强游泳的锻炼效果了，在游泳此“全侵”式游泳虽然可以长游不累，但是感觉身体和心理没有满足感。反而身体发力快速竞技式游泳后，虽然累却满足。为更好的锻炼身体，按照《游泳健身》《美国自游泳技术》等书籍，按照锻炼计划后续开始游泳锻炼健身。</p>
+<p>由于工作原因，每周游泳的次数无法完全保证，非游泳时间，按照陆地训练计划训练身体体能吧。</p>
+<h2 id="陆上训练"><a href="#陆上训练" class="headerlink" title="陆上训练"></a>陆上训练</h2><p>目的：锻炼核心力量、以及自游泳中需要用到的肌肉群、提升腿部的柔韧性</p>
+<h3 id="训练涉及的肌肉"><a href="#训练涉及的肌肉" class="headerlink" title="训练涉及的肌肉"></a>训练涉及的肌肉</h3><p>游泳中需要用的肌肉主要有：臂压肌、臂内旋肌、肘伸肌、腿伸肌</p>
+<h4 id="臂压肌"><a href="#臂压肌" class="headerlink" title="臂压肌"></a>臂压肌</h4><p>【重点】自游泳划水时用到的肌肉，大臂从抱水开始划水到小臂准备后伸时都会用到，主要包括以下几块肌肉：</p>
+<ul>
+<li>背阔肌</li>
+<li>胸大肌</li>
+<li>大圆肌</li>
+<li>肱三头肌</li>
+</ul>
+<h4 id="臂内旋肌"><a href="#臂内旋肌" class="headerlink" title="臂内旋肌"></a>臂内旋肌</h4><p>【重点】手臂入水到高肘抱水时，会用到内旋肌，保证EVF。涉及的主要肌肉包含以下几块：</p>
+<ul>
+<li>大圆肌</li>
+<li>肩胛下肌</li>
+<li>背阔肌</li>
+<li>胸大肌</li>
+</ul>
+<h4 id="肘伸肌"><a href="#肘伸肌" class="headerlink" title="肘伸肌"></a>肘伸肌</h4><p>对自游泳来说，就是划水后期，需要伸直小臂（伸肘）继续划水时用到的肌肉，主要包含：</p>
+<ul>
+<li>肱三头肌</li>
+</ul>
+<h4 id="腿伸肌"><a href="#腿伸肌" class="headerlink" title="腿伸肌"></a>腿伸肌</h4><p>自游泳出发蹬池壁时用到的肌肉，也是蛙泳的腿部主要肌肉，主要包含：</p>
+<ul>
+<li>股四头肌</li>
+<li>腓肠肌</li>
+<li>比目鱼肌</li>
+</ul>
+<h2 id="水中训练"><a href="#水中训练" class="headerlink" title="水中训练"></a>水中训练</h2><h2 id="理论知识"><a href="#理论知识" class="headerlink" title="理论知识"></a>理论知识</h2><p>身体锻炼的目的主要是三部分：力量、耐力、柔韧性</p>
+<h3 id="力量和耐力训练原则"><a href="#力量和耐力训练原则" class="headerlink" title="力量和耐力训练原则"></a>力量和耐力训练原则</h3><h4 id="DeLorme原则"><a href="#DeLorme原则" class="headerlink" title="DeLorme原则"></a>DeLorme原则</h4><p><img src="/2018/11/11/游泳锻炼计划/image-20181111221353266.png" alt="image-20181111221353266"><br><img src="/2018/11/11/游泳锻炼计划/image-20181111221412711.png" alt="image-20181111221412711"></p>
+<h4 id="超量负荷原则"><a href="#超量负荷原则" class="headerlink" title="超量负荷原则"></a>超量负荷原则</h4><p><img src="/2018/11/11/游泳锻炼计划/image-20181111221653699.png" alt="image-20181111221653699"></p>
+<h3 id="发展力量-amp-耐力的综合训练计划"><a href="#发展力量-amp-耐力的综合训练计划" class="headerlink" title="发展力量&amp;耐力的综合训练计划"></a>发展力量&amp;耐力的综合训练计划</h3><p>强调力量和耐力同时训练</p>
+<p><img src="/2018/11/11/游泳锻炼计划/image-20181111222820866.png" alt="image-20181111222820866"></p>
+<h3 id="静力训练"><a href="#静力训练" class="headerlink" title="静力训练"></a>静力训练</h3><p><img src="/2018/11/11/游泳锻炼计划/image-20181111223446614.png" alt="image-20181111223446614"></p>
 
       
     </div>
@@ -414,8 +445,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/03/一台运行着QQ的计算机是运用了哪些分层抽象的思想？/" rel="next" title="一台运行着QQ的计算机是运用了哪些分层抽象的思想？">
-                <i class="fa fa-chevron-left"></i> 一台运行着QQ的计算机是运用了哪些分层抽象的思想？
+              <a href="/2018/10/03/补码/" rel="next" title="补码">
+                <i class="fa fa-chevron-left"></i> 补码
               </a>
             
           </div>
@@ -423,10 +454,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/11/11/游泳锻炼计划/" rel="prev" title="游泳锻炼计划">
-                游泳锻炼计划 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -557,7 +584,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#前言"><span class="nav-number">1.</span> <span class="nav-text">前言</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#什么是补码？"><span class="nav-number">2.</span> <span class="nav-text">什么是补码？</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#定义"><span class="nav-number">2.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#原理"><span class="nav-number">2.2.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#实现"><span class="nav-number">2.3.</span> <span class="nav-text">实现</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#无符号加法运算"><span class="nav-number">2.3.1.</span> <span class="nav-text">无符号加法运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#无符号减法运算"><span class="nav-number">2.3.2.</span> <span class="nav-text">无符号减法运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#有符号加法运算"><span class="nav-number">2.3.3.</span> <span class="nav-text">有符号加法运算</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#有符号减法运算"><span class="nav-number">2.3.4.</span> <span class="nav-text">有符号减法运算</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#为啥用补码？"><span class="nav-number">3.</span> <span class="nav-text">为啥用补码？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#如何验证计算机是否采用补码？"><span class="nav-number">4.</span> <span class="nav-text">如何验证计算机是否采用补码？</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#参考"><span class="nav-number">5.</span> <span class="nav-text">参考</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#背景"><span class="nav-number">1.</span> <span class="nav-text">背景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#陆上训练"><span class="nav-number">2.</span> <span class="nav-text">陆上训练</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#训练涉及的肌肉"><span class="nav-number">2.1.</span> <span class="nav-text">训练涉及的肌肉</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#臂压肌"><span class="nav-number">2.1.1.</span> <span class="nav-text">臂压肌</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#臂内旋肌"><span class="nav-number">2.1.2.</span> <span class="nav-text">臂内旋肌</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#肘伸肌"><span class="nav-number">2.1.3.</span> <span class="nav-text">肘伸肌</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#腿伸肌"><span class="nav-number">2.1.4.</span> <span class="nav-text">腿伸肌</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#水中训练"><span class="nav-number">3.</span> <span class="nav-text">水中训练</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#理论知识"><span class="nav-number">4.</span> <span class="nav-text">理论知识</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#力量和耐力训练原则"><span class="nav-number">4.1.</span> <span class="nav-text">力量和耐力训练原则</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#DeLorme原则"><span class="nav-number">4.1.1.</span> <span class="nav-text">DeLorme原则</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#超量负荷原则"><span class="nav-number">4.1.2.</span> <span class="nav-text">超量负荷原则</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#发展力量-amp-耐力的综合训练计划"><span class="nav-number">4.2.</span> <span class="nav-text">发展力量&amp;耐力的综合训练计划</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#静力训练"><span class="nav-number">4.3.</span> <span class="nav-text">静力训练</span></a></li></ol></li></ol></div>
             
 
           </div>
